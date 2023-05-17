@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.18
+	Version: 0.19
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -180,26 +180,34 @@ function CustomBoxesCSSLoad() {
 }
 add_action( 'wp_enqueue_scripts', 'CustomBoxesCSSLoad' );
 
-/*
-	Box pillole
+/* Elenco dei box (Switch $boxselection)
 */
-function htmlContent_Pillole() { ?>
-    <div class="gb-block-notice pillole">
-		<div class="gb-notice-title pillole">
-			<p>Pillole</p>
-		</div>
-		<div class="gb-notice-text pillole">
-			<p>
-				<i class="fas fa-bolt fa-pull-right fa-5x" style="padding-right: 10px;"></i> Le pillole sono articoli di veloce lettura dedicati a notizie, script o qualsiasi altra cosa possa essere "<em>divorata e messa in pratica</em>" con poco. Uno spazio del blog riservato agli articoli "<strong><em>a bruciapelo</em></strong>"!<br />
-				Se vuoi leggere le altre pillole <a href="<?php network_site_url('/'); ?>tag/pillole">fai clic qui</a>.
-			</p>
-		</div>
-	</div>
-	<?php return;
+function htmlContent($boxselection) {
+	switch ($boxselection):
+		case "pillole":
+			$boxcontent =  '<div class="gb-block-notice pillole">';
+			$boxcontent .= '	<div class="gb-notice-title pillole">';
+			$boxcontent .= '		<p>Pillole</p>';
+			$boxcontent .= '	</div>';
+			$boxcontent .= '	<div class="gb-notice-text pillole">';
+			$boxcontent .= '		<p>';
+			$boxcontent .= '			<i class="fas fa-bolt fa-pull-right fa-5x" style="padding-right: 10px;"></i> Le pillole sono articoli di veloce lettura dedicati a notizie, script o qualsiasi altra cosa possa essere "<em>divorata e messa in pratica</em>" con poco. Uno spazio del blog riservato agli articoli "<strong><em>a bruciapelo</em></strong>"!<br />
+				Se vuoi leggere le altre pillole <a href="' . network_site_url('/') . 'tag/pillole">fai clic qui</a>.';
+			$boxcontent .= '		</p>';
+			$boxcontent .= '	</div>';
+			$boxcontent .= '</div>';
+			break;
+		case "pstartmilano":
+			$boxcontent = '<img src="https://gioxx.org/wp-content/uploads/PressStart-GioxxsWall.png" style="padding-bottom: 15px;" />';
+			break;
+		default:
+			$boxcontent = '';
+	endswitch;
+	return $boxcontent;
 }
 
-add_filter ('the_content', 'TagPersonalizzati');
-function TagPersonalizzati($content) {
+add_filter ('the_content', 'customboxes');
+function customboxes($content) {
 	# A piccoli passi - Gli articoli per chi deve ancora imparare
 		$piccolipassi =  '<div class="gb-block-notice piccolipassi">';
 		$piccolipassi .= '<div class="gb-notice-title piccolipassi"><p>A piccoli passi</p></div>';
@@ -218,8 +226,6 @@ function TagPersonalizzati($content) {
 				La rubrica &quot;<em>leggera</em>&quot; di approfondimento alla quale per&ograve; non fare l&#39abitudine, <em>non siamo mica cos&igrave; affidabili</em> da queste parti!<br />
 				Se vuoi leggere gli altri articoli dedicati alla "<em>vita milanese</em>" <a href="'.network_site_url('/').'tag/mrl">fai clic qui</a>.</p></div>
 		</div>';
-
-	$pstartmilano = '<img src="https://gioxx.org/wp-content/uploads/PressStart-GioxxsWall.png" style="padding-bottom: 15px;" />';
 
 	# Android's Corner
 	$androidcorner= '<div class="gb-block-notice android">
@@ -297,7 +303,7 @@ function TagPersonalizzati($content) {
 	
 		if ( has_tag('mrl') ) { $content .= $mrl; } // MRL - Milano Real Life
 		if ( has_tag('press-start-milano') ) { $content .= $pstartmilano; } // Press Start: Milano
-		if ( has_tag('pillole') ) { $content .= htmlContent_Pillole(); } // Pillole
+		if ( has_tag('pillole') ) { $content .= htmlContent('pillole'); } // Pillole
 		if ( has_tag('piccoli-passi') ) { $content .= $piccolipassi; } // Piccoli Passi
 		if ( has_category('sponsored') ) { $content .= $economysurvive; } // Consigli per gli acquisti (Sponsored)
 		if ( has_tag('android-corner') ) { $content .= $androidcorner; } // Android's Corner
@@ -311,7 +317,7 @@ function TagPersonalizzati($content) {
 	if ( is_home() ) {
 		if ( has_tag('mrl') ) { $content .= $mrl; } // MRL - Milano Real Life
 		if ( has_tag('press-start-milano') ) { $content .= $pstartmilano; } // Press Start: Milano
-		if ( has_tag('pillole') ) { $content .= htmlContent_Pillole(); } // Pillole
+		if ( has_tag('pillole') ) { $content .= htmlContent('pillole'); } // Pillole
 		if ( has_tag('piccoli-passi') ) { $content .= $piccolipassi; } // Piccoli Passi
 		if ( has_category('sponsored') ) { $content .= $economysurvive; } // Consigli per gli acquisti (Sponsored)
 		if ( has_tag('android-corner') ) { $content .= $androidcorner; } // Android's Corner
@@ -325,7 +331,7 @@ function TagPersonalizzati($content) {
 	if ( is_archive() ) {
 		if (has_tag('mrl')) { $content.= $mrl; } // MRL - Milano Real Life
 		if (has_tag('press-start-milano')) { $content.= $pstartmilano; } // Press Start: Milano
-		if (has_tag('pillole')) { $content.= htmlContent_Pillole(); } // Pillole
+		if (has_tag('pillole')) { $content.= htmlContent('pillole'); } // Pillole
 		if (has_tag('piccoli-passi')) { $content.= $piccolipassi; } // Piccoli Passi
 		if (has_category('sponsored')) { $content.= $economysurvive; } // Consigli per gli acquisti (Sponsored)
 		if (has_tag('android-corner')) { $content.= $androidcorner; } // Android's Corner

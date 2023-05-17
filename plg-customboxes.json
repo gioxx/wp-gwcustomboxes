@@ -4,18 +4,18 @@
 	"author" : "<a href='https://gioxx.org'>Gioxx</a>",
 	"author_profile" : "https://profiles.wordpress.org/gioxx",
     	"donate_link" : "https://ko-fi.com/gioxx",
-	"version" : "0.18",
+	"version" : "0.19",
 	"download_url" : "https://github.com/gioxx/wp-gwcustomboxes/releases/latest/download/wp-gwcustomboxes.zip",
 	"requires" : "6.2",
 	"tested" : "6.2.1",
 	"requires_php" : "8.0",
     	"added" : "2015-09-02 00:00:00",
-	"last_updated" : "2023-05-17 10:20:00",
+	"last_updated" : "2023-05-17 11:26:00",
     	"homepage" : "https://gioxx.org",
 	"sections" : {
-		"description" : "Box personalizzati per gli articoli di Gioxx's Wall.",
+		"description" : "Box personalizzati che compaiono negli articoli di Gioxx's Wall: pillole, banco prova e molto altro ancora.",
 		"installation" : "Un clic sul pulsante di attivazione e il gioco è fatto.",
-		"changelog" : "<h4>v0.16 del 17/05/2023</h4><ul><li>Change: Aggiornamenti automatici integrati con il rilascio via Github.</li><li>Improvement: Pulizia e ottimizzazione codice.</li><li>Immagine di copertina <a href=\"https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Erda Estremera</a> su <a href=\"https://unsplash.com/it/foto/sxNt9g77PE0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>.</li></ul>"
+		"changelog" : "<h4>v0.19 del 17/05/2023</h4><ul><li>Bugfix: Metto a posto JSON riepilogativo.</li><li>Bugfix: correggo problema blocco proposto in ogni \"content\" (abbandono l'idea della function dedicata).</li></ul><h4>v0.16 del 17/05/2023</h4><ul><li>Change: Aggiornamenti automatici integrati con il rilascio via Github.</li><li>Improvement: Pulizia e ottimizzazione codice.</li><li>Immagine di copertina <a href=\"https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Erda Estremera</a> su <a href=\"https://unsplash.com/it/foto/sxNt9g77PE0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>.</li></ul>"
 	},
 	"banners" : {
 		"low" : "https://gioxx.github.io/wp-gwcustomboxes/img/banner-772x250.jpg",
