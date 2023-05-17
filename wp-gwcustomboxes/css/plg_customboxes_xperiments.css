@@ -1,0 +1,62 @@
+/* Xperiments */
+.note {
+  position: relative;
+  width: 95%;
+  padding: 1em;
+  margin: 1em auto;
+  color: #333;
+  background: #ecf0f1;
+  overflow: hidden;
+}
+
+.entry-content .note p {
+  margin-bottom: 10px;
+  margin-bottom: 1rem; }
+
+.notesuccess {
+  background-color: #dff0d8; }
+
+.notewarning {
+  background-color: #fcf8e3; }
+
+.noteinfo {
+  background-color: #d9edf7; }
+
+.notedanger {
+  background-color: #f2dede; }
+
+.note:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-color: #fbfbfb #fbfbfb #868A8B #868A8B;
+  background: #868A8B;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), -1px 1px 1px rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 0; }
+
+.notesuccess:before {
+  border-color: #fbfbfb #fbfbfb #ACBDA5 #ACBDA5;
+  background: #ACBDA5; }
+
+.notewarning:before {
+  border-color: #fbfbfb #fbfbfb #C9C5B0 #C9C5B0;
+  background: #C9C5B0; }
+
+.noteinfo:before {
+  border-color: #fbfbfb #fbfbfb #A6BAC4 #A6BAC4;
+  background: #A6BAC4; }
+
+.notedanger:before {
+  border-color: #fbfbfb #fbfbfb #BFABAB #BFABAB;
+  background: #BFABAB; }
+
+.note.rounded { border-radius: 5px 0 5px 5px; }
+
+.note.rounded:before {
+  border-width: 8px;
+  border-color: #fff #fff transparent transparent;
+  border-radius: 0 0 0 5px; }

@@ -1,0 +1,41 @@
+## Dettaglio changelog  
+
+- 17/5/23- si approda su GitHub, si rivede un po' il codice, si fa pulizia dove possibile.
+- 8/12/20- ho spostato l'icona del blocco articolo non aggiornato di recente.
+- 22/11/20- nuovo blocco per aggiornamento dell'articolo.
+- 21/11/20- rifacimento completo della grafica dei custom boxes.
+- 7/11/20- modifico il box del banco prova per essere un po' meno invadente rispetto al passato, più compatto. Me gusta, lo applico a tutti tranne al blocco di attenzione per contenuto "vecchio", porto quindi la versione del plugin CustomBoxes alla 0.6.
+- 8/5/20- carico qui dentro JavaScript per la chiusura box custom.
+- 19/4/20- modifico icona pillole.
+- 17/4/20- il riconoscimento dell'articolo "sponsored" passa sotto categoria dedicata, modifico quindi has_tag con has_category. Modifico anche class="titolo_custombox" per i titoli dei ox alert.
+- 9/4/20- corretti i custom boxes per integrare i tag p mancanti.
+- 23/9/19- leggera modifica del blocco Sponsored nel caso di richiesta esplicita di modifica articolo.
+- 25/6/19- tutti gli URL immagini diretti sono stati sostituiti con quelli gestiti da WordPress Media.
+- 19/6/19- modifico blocco Android's Corner e metto a posto i tag ALT non corretti.
+- 20/3/19- aggiungo "A piccoli passi" (blocco articoli con tag).
+- 11/10/18- ho azzerato le modifiche tra is_archive, is_home e is_single per i box custom, tutti in fondo all'articolo (per evitare problemi nelle anteprime nei box di Sidebar), rimesso ano anche all'indentazione codice e spaziature.
+- 4/10/18- ho spostato la posizione dei Custom Boxes Pillole.
+- 17/9/18- ho spostato la posizione dei Custom Boxes Android / Sponsorizzato / Consigli per gli acquisti.
+- 16/9/18- modifica del blocco Sponsored (autore sottoscritto o ospite di vecchia data), includo icona FontAwesome per indicare il contenuto sponsorizzato.
+- 19/6/18- pura modifica estetica del box Pillole.
+- 17/6/18- aggiungo il Blocco Prodotto anche per il Banco Prova Console.
+- 8/6/18- migrato a nuovo AlertBox le Pillole.
+- 2/6/18- migrato a nuovo AlertBox OldPost. Pulizia codice non più usato.
+- 22/5/18- migrato a nuovo AlertBox MRL + Disclaimer #BancoProva.
+- 20/5/18- modificato box sponsored post per presentare a video il nuovo AlertBox.
+- 15/1/18- class "bancoprova" nei div dei test su strada, per intercettarlo e pulirlo dalla Telegram Instant View. Modificato puntamento immagine e sostituito con thumb Fighorse150x150.pg.
+- 11/1/18- modificato "i miei pensieri" con "le mie opinioni" nel blocco disclaimer del banco prova.
+- 23/10/17- ho modificato un dettaglio sul caricamento immagine di Mario per il box pillole.
+- 20/10/17- ho provato a giocare con il blocco donazione PayPal.me, mi fa schifo, ciao e grazie per il pesce.
+- 3/3/17- puntamenti a HTTPS.
+- 20/12/16- ho modificato le categorie legate al progetto sponsorizzato e ai singoli post sponsorizzati, rifatto anche il div dello Sponsored post, utilizzo il nuovo wrapper.
+- 11/7/16- ho modificato una sola parola nel box materiale sponsorizzato.
+- 13/6/16- includo nuovo box per materiale sponsorizzato (se rimane a me, viene restituito o comprato di tasca mia).
+- 4/4/16- il logo dello sponsor (progetto sponsorizzato) può avere al massimo un width di 250px.
+- 18/3/16- modificato il blocco della vecchia pubblicazione. L'ho spostato in coda perché modifica anche il contenuto della sidebar e viene fuori una schifezza agli occhi dei lettori.
+- 15/2/16- inserito blocco Press Start Milano.
+- 30/11/15- corretto errore URL recensione VF Smart Ultra 6.
+- 1/11/15- corretti errori su blocco VF Smart Ultra 6.
+- 28/10/15- completate informazioni VF Smart Ultra 6.
+- 6/10/15- messo a posto blocco Xperia Z2, creato blocco per VF Smart Ultra 6.
+- 2/9/15- inseriti i controlli di presenza variabili per i Progetti Sponsorizzati, rimosso blocco di TimeRepublik.

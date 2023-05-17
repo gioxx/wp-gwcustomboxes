@@ -1,0 +1,584 @@
+/* 	Nuovo Wrapper update
+	fonte: https://css-tricks.com/snippets/css/corner-ribbon/
+*/
+.wrapper {
+	margin: 12px auto;
+	background: #d4edda;
+	border-color: #c3e6cb;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	position: relative;
+	z-index: 90;
+	padding-left: 7px;
+	padding-right: 60px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.ribbon-wrapper-green {
+	width: 85px;
+	height: 88px;
+	overflow: hidden;
+	position: absolute;
+	top: -3px;
+	right: -3px;
+}
+
+.ribbon-green {
+	font: bold 15px Sans-Serif;
+	color: #333;
+	text-align: center;
+	text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	position: relative;
+	padding: 7px 0;
+	left: -5px;
+	top: 15px;
+	width: 120px;
+	background-color: #BFDC7A;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+	background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+	background-image: -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+	background-image: -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+	background-image: -o-linear-gradient(top, #BFDC7A, #8EBF45);
+	color: #6a6340;
+	-webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ribbon-green:before,
+.ribbon-green:after {
+	content: "";
+	border-top: 3px solid #6e8900;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	position: absolute;
+	bottom: -3px;
+}
+
+.ribbon-green:before {
+	left: 0;
+}
+
+.ribbon-green:after {
+	right: 0;
+}
+
+/* 	Nuovo box per alert (qualsiasi, tipo sponsorizzati)
+    Credits:
+		https: //www.w3schools.com/howto/howto_js_alert.asp
+	Modifiche:
+		10/4/20: porto qui dentro il box di chiusura post.
+		9/4/20: aggiornamento completo per tutti i box.
+*/
+.boxalert {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 5px 0 0 0;
+	background-color: #ffcccc;
+	opacity: 1;
+	transition: opacity 0.6s;
+	/* 600ms to fade out */
+	min-height: 50px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 15px;
+	border-color: #c3e6cb;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	position: relative;
+	z-index: 90;
+}
+
+.boxalert p {
+	padding-left: 20px;
+	padding-right: 5px;
+	font-size: 1em;
+}
+
+.boxalert h3 {
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+.boxalert h4 {
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+.boxalert ul {
+	padding-left: 20px;
+	padding-right: 5px;
+}
+
+.boxalert.bancoprova p {
+	font-size: 0.8em;
+}
+
+.boxalert.success {
+	background-color: #4CAF50;
+}
+
+.boxalert.info {
+	background-color: #b3e6ff;
+	background-image: url('https://gioxx.org/wp-content/uploads/2020/03/icons8-info-128.png');
+	background-repeat: no-repeat;
+	background-position: top left 5px;
+	background-position-y: 18px;
+	background-size: 35px;
+	padding-bottom: 0px;
+}
+
+.boxalert.info p {
+	padding-left: 50px;
+}
+
+.boxalert.ack {
+	background-color: #E0EDF5;
+	border-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.boxalert.ack img {
+	padding: 7px 10px 0 0;
+}
+
+.boxalert.warning {
+	background-color: #ff9800;
+	background-image: url('https://gioxx.org/wp-content/uploads/2020/04/warning.png');
+	background-repeat: no-repeat;
+	background-position: top left 5px;
+	background-position-y: 18px;
+	background-size: 35px;
+}
+
+.boxalert.warning p {
+	padding-left: 50px;
+}
+
+.boxalert.mrl {
+	background-color: #e6e6e6;
+}
+
+.boxalert.mrl p {
+	font-size: 0.8em;
+}
+
+.boxalert.chiusura_post {
+	background-color: #e6e6e6;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.boxalert.chiusura_post p {
+	font-size: 0.8em;
+	padding-top: 15px;
+}
+
+.boxalert.pillole {
+	background-color: #d9edf7;
+	color: #000000 !important;
+	border: 1px;
+}
+
+.boxalert.pillole p {
+	font-size: 0.8em;
+}
+
+.boxalertclosebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+	padding-right: 20px;
+}
+
+.boxalertclosebtn:hover {
+	color: black;
+}
+
+span.titolo_custombox {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding-bottom: 7px;
+}
+
+/* 	Nuovo grafica dei Custom Box dal 20/11/20
+    Credits:
+		https: //koolinus.net
+		https: //getbootstrap.com/docs/4.0/components/alerts/
+	Modifiche:
+		21/11/20: porto qui dentro il box di alert per articolo non aggiornato.
+*/
+.gb-block-notice {
+	border-radius: 5px;
+	position: relative;
+	margin-bottom: 1.2em;
+	background-color: #f44336;
+}
+
+.gb-block-notice .gb-notice-title {
+	font-weight: 700;
+	padding: .5em 1em;
+	margin: 0;
+	color: #000000;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	width: 100%;
+	display: inline-block;
+}
+
+.gb-block-notice .gb-notice-title p {
+	margin-bottom: 0;
+}
+
+.gb-block-notice .gb-notice-text {
+	border-color: #f44336 !important;
+	padding: 1em 1em 0px 1em;
+	border: solid 2px;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.gb-block-notice .gb-notice-text i {
+	color: #f44336;
+}
+
+.gb-block-notice .gb-notice-text p {
+	font-size: 0.8em;
+}
+
+.gb-block-notice .gb-notice-title.bancoprova {
+	color: #ffffff;
+}
+
+/* Pillole */
+.gb-block-notice .gb-notice-title.pillole {
+	color: #155724;
+}
+
+.gb-block-notice.pillole {
+	background-color: #32d732;
+}
+
+.gb-block-notice .gb-notice-text.pillole {
+	border-color: #32D732 !important;
+}
+
+.gb-block-notice .gb-notice-text.pillole i {
+	color: #32D732;
+}
+
+/* A piccoli passi */
+.gb-block-notice .gb-notice-title.piccolipassi {
+	color: #004085;
+}
+
+.gb-block-notice.piccolipassi {
+	background-color: #cce5ff;
+}
+
+.gb-block-notice .gb-notice-text.piccolipassi {
+	border-color: #cce5ff !important;
+}
+
+.gb-block-notice .gb-notice-text.piccolipassi i {
+	color: #cce5ff;
+}
+
+/* Milano Real Life */
+.gb-block-notice .gb-notice-title.mrl {
+	color: #636363;
+}
+
+.gb-block-notice.mrl {
+	background-color: #e6e6e6;
+}
+
+.gb-block-notice .gb-notice-text.mrl {
+	border-color: #e6e6e6 !important;
+}
+
+.gb-block-notice .gb-notice-text.mrl i {
+	color: #e6e6e6;
+}
+
+/* Android's Corner */
+.gb-block-notice .gb-notice-title.android {
+	color: #14482B;
+}
+
+.gb-block-notice.android {
+	background-color: #3DDC84;
+}
+
+.gb-block-notice .gb-notice-text.android {
+	border-color: #3DDC84 !important;
+}
+
+.gb-block-notice .gb-notice-text.android i {
+	color: #3DDC84;
+}
+
+/* Articolo sponsorizzato */
+.gb-block-notice .gb-notice-title.sponsored {
+	color: #605321;
+}
+
+.gb-block-notice.sponsored {
+	background-color: #ffdd57;
+}
+
+.gb-block-notice .gb-notice-text.sponsored {
+	border-color: #ffdd57 !important;
+}
+
+.gb-block-notice .gb-notice-text.sponsored i {
+	color: #ffdd57;
+}
+
+/* Info */
+.gb-block-notice .gb-notice-title.info {
+	color: #004085;
+}
+
+.gb-block-notice.info {
+	background-color: #cce5ff;
+}
+
+.gb-block-notice .gb-notice-text.info {
+	border-color: #cce5ff !important;
+}
+
+.gb-block-notice .gb-notice-title.info i {
+	color: #004085;
+	padding-right: 25px;
+	font-size: 1.5em;
+}
+
+.gb-block-notice .gb-notice-text.info p {
+	font-size: 0.9em;
+}
+
+/* Ideas (Suggerimenti) */
+.gb-block-notice .gb-notice-title.idea {
+	color: #CC955C;
+}
+
+.gb-block-notice.idea {
+	background-color: #ffe6cc;
+}
+
+.gb-block-notice .gb-notice-text.idea {
+	border-color: #ffe6cc !important;
+}
+
+.gb-block-notice .gb-notice-title.idea i {
+	color: #ffbb73;
+	padding-right: 25px;
+	font-size: 1.5em;
+}
+
+.gb-block-notice .gb-notice-text.idea p {
+	font-size: 0.9em;
+}
+
+/* Warning */
+.gb-block-notice .gb-notice-title.warning {
+	color: #7D4A00;
+	background-image: url('https://gioxx.org/wp-content/uploads/2020/04/warning.png');
+	background-repeat: no-repeat;
+	background-position: top right 45px;
+	background-position-y: 7px;
+	background-size: 30px;
+}
+
+.gb-block-notice.warning {
+	background-color: #ff9800;
+}
+
+.gb-block-notice .gb-notice-text.warning {
+	border-color: #ff9800 !important;
+}
+
+.gb-block-notice .gb-notice-text.warning i {
+	color: #ff9800;
+}
+
+/* Alert box per articolo non aggiornato */
+.gb-block-notice.timealert {
+	background-color: #f5c6cb;
+	color: #721c24;
+}
+
+.gb-block-notice .gb-notice-text.timealert {
+	border-color: #f5c6cb !important;
+	background-color: #f8d7da;
+}
+
+.gb-block-notice .gb-notice-title p.timealert {
+	background-image: url('https://gioxx.org/wp-content/uploads/2019/06/oldpost.png');
+	background-repeat: no-repeat;
+	background-position: top right 25px;
+	background-position-y: 1px;
+	background-size: 30px;
+	font-size: 1.2em;
+	color: #721c24;
+}
+
+.gb-block-notice .gb-notice-text p.timealert {
+	font-size: 1em;
+}
+
+/* Nuovo blocco per aggiornamento articolo - GSolone 22/11/20 */
+.gb-block-notice .gb-notice-title.postupdate {
+	color: #155724;
+}
+
+.gb-block-notice.postupdate {
+	background-color: #d4edda;
+}
+
+.gb-block-notice .gb-notice-text.postupdate {
+	border-color: #c3e6cb !important;
+}
+
+.gb-block-notice .gb-notice-title.postupdate i {
+	color: #155724;
+	padding-right: 25px;
+	font-size: 1.5em;
+}
+
+.gb-block-notice .gb-notice-text.postupdate p {
+	font-size: 1em;
+}
+
+/* Chiusura articolo GWall */
+.gb-block-notice .gb-notice-title.gwall {
+	color: #90de6c;
+	background-image: url('https://gioxx.org/wp-content/uploads/2023/04/ICON_path90px-e1680611156636.png');
+	background-repeat: no-repeat;
+	background-position: top right 45px;
+	background-position-y: 7px;
+	background-size: 30px;
+}
+
+.gb-block-notice.gwall {
+	background-color: #5fac3b;
+}
+
+.gb-block-notice .gb-notice-text.gwall {
+	border-color: #5fac3b !important;
+}
+
+.gb-block-notice .gb-notice-text.gwall i {
+	color: #5fac3b;
+}
+
+/* 	Nuovi Custom Boxes (16/5/22)
+    Credits:
+      	https://stackoverflow.com/a/40911154
+		https://www.w3schools.com/howto/howto_css_two_columns.asp
+	Modifiche:
+		10/6/22: correggo richiamo .messagebottle-sidebar .fa-solid che prima li intercettava tutti, ovunque nel blog. Approfitto e modifico padding del contenuto di messagebottle.
+		3/6/22: correggo alcuni riferimenti del CSS.
+		17/5/22: modifico barra laterale e trasformo in div separato con testo in verticale.
+*/
+.messagebottle {
+	display: flex;
+	opacity: 1;
+	transition: opacity 0.6s;
+	/* 600ms to fade out */
+	margin: 12px 0 12px 0;
+}
+
+.messagebottle-sidebar {
+	max-width: 30px;
+	flex: 20px;
+	background-color: #D8000C;
+	color: #ffffff;
+	writing-mode: tb-rl;
+	transform: rotate(-180deg);
+	padding: 10px 5px 0 5px;
+	font-weight: bold;
+}
+
+.messagebottle-sidebar .fa-brands,
+.messagebottle-sidebar .fa-solid {
+	writing-mode: tb-rl;
+	transform: rotate(-180deg);
+	padding-top: 5px;
+}
+
+.messagebottle-content {
+	background-color: #FFBABA;
+	color: #000000;
+	padding: 12px 10px 10px 12px;
+	max-width: 92%;
+}
+
+.messagebottle-sidebar.raspberry {
+	background-color: #c7053d;
+}
+
+.messagebottle-content.raspberry {
+	background-color: #F3CDD8;
+}
+
+.messagebottle-content.raspberry p {
+	margin-bottom: 0.5em;
+}
+
+.messagebottle-content.raspberry a {
+	color: #641E54;
+}
+
+.messagebottle-sidebar.postupdate {
+	background-color: #14cc60;
+}
+
+.messagebottle-content.postupdate {
+	background-color: #abedc6;
+}
+
+.messagebottle-content.postupdate p {
+	margin-bottom: 0.5em;
+}
+
+.messagebottle-sidebar.gwall {
+	background-color: #5fac3b;
+	flex: 0;
+	font-size: 0.9em;
+}
+
+.messagebottle-sidebar.gwall img {
+	max-width: 30px;
+	transform: rotate(180deg);
+	padding-top: 7px;
+}
+
+.messagebottle-content.gwall {
+	background-color: #ffffff;
+	font-size: 0.9em;
+}
+
+.messagebottle-content.gwall p {
+	margin-bottom: 0.5em;
+}
+
+.messagebottle-content.gwall a {
+	color: #000000;
+}
