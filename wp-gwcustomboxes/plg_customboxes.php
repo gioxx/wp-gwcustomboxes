@@ -1,11 +1,11 @@
 <?php
 
 /*
-	Plugin Name: Custom Boxes for Gioxx's Wall
+	Plugin Name: Custom Boxes per Gioxx's Wall
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.19
+	Version: 0.20
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -15,8 +15,8 @@ defined( 'ABSPATH' ) || exit;
 /*	Registro sorgente aggiornamento plugin e pagina dettaglio in Plugin Install
 	Credits: https://rudrastyh.com/wordpress/self-hosted-plugin-update.html
 */
-if ( !class_exists('plgUpdateChecker') ) {
-	class plgUpdateChecker{
+if ( !class_exists('gwplgUpdateChecker') ) {
+	class gwplgUpdateChecker{
 		public $plugin_slug;
 		public $version;
 		public $cache_key;
@@ -24,7 +24,7 @@ if ( !class_exists('plgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.19';
+			$this->version = '0.20';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = false;
 
@@ -147,7 +147,7 @@ if ( !class_exists('plgUpdateChecker') ) {
 		}
 
 	}
-	new plgUpdateChecker();
+	new gwplgUpdateChecker();
 }
 
 add_filter( 'plugin_row_meta', function( $links_array, $plugin_file_name, $plugin_data, $status ) {
@@ -203,11 +203,12 @@ function htmlContent($boxselection) {
 		default:
 			$boxcontent = '';
 	endswitch;
+
 	return $boxcontent;
 }
 
-add_filter ('the_content', 'customboxes');
-function customboxes($content) {
+add_filter ('the_content', 'gwCustomBoxes');
+function gwCustomBoxes($content) {
 	# A piccoli passi - Gli articoli per chi deve ancora imparare
 		$piccolipassi =  '<div class="gb-block-notice piccolipassi">';
 		$piccolipassi .= '<div class="gb-notice-title piccolipassi"><p>A piccoli passi</p></div>';
