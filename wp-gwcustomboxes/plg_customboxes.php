@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.21
+	Version: 0.22
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.21';
+			$this->version = '0.22';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -176,6 +176,33 @@ function CustomBoxesCSSLoad() {
     //wp_enqueue_style( 'CustomBoxesDev', $plugin_url . 'css/plg_customboxes_xperiments.css' );
 }
 add_action( 'wp_enqueue_scripts', 'CustomBoxesCSSLoad' );
+
+/*	Registro icona personalizzata del plugin (credits: ChatGPT!)
+*/
+function custom_plugin_icon() {
+    $plugin_dir = plugin_dir_url(__FILE__);
+    $icon_url   = $plugin_dir . 'assets/icon-128x128.png';
+
+    $plugin_data = get_plugin_data(__FILE__);
+    $plugin_slug = sanitize_title($plugin_data['Name']);
+
+    ?>
+    <style>
+        #<?php echo $plugin_slug; ?> .dashicons-admin-generic:before {
+            content: "\f108";
+            background-image: url(<?php echo $icon_url; ?>);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 16px;
+            display: inline-block;
+            vertical-align: top;
+            height: 16px;
+            width: 16px;
+        }
+    </style>
+    <?php
+}
+add_action('admin_head-update-core.php', 'custom_plugin_icon');
 
 /* Elenco dei box (switch $boxSelection)
 */
