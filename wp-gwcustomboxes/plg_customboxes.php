@@ -5,14 +5,14 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.17
+	Version: 0.18
 	Author URI: https://gioxx.org
 	License: GPL3
 */
 
 defined( 'ABSPATH' ) || exit;
 
-/*	Registro sorgente aggiornamento plugin
+/*	Registro sorgente aggiornamento plugin e pagina dettaglio in Plugin Install
 	Credits: https://rudrastyh.com/wordpress/self-hosted-plugin-update.html
 */
 if ( !class_exists('plgUpdateChecker') ) {
@@ -150,6 +150,26 @@ if ( !class_exists('plgUpdateChecker') ) {
 	new plgUpdateChecker();
 }
 
+add_filter( 'plugin_row_meta', function( $links_array, $plugin_file_name, $plugin_data, $status ) {
+	if( strpos( $plugin_file_name, basename( __FILE__ ) ) ) {
+		$links_array[] = sprintf(
+			'<a href="%s" class="thickbox open-plugin-details-modal">%s</a>',
+			add_query_arg(
+				array(
+					'tab' => 'plugin-information',
+					'plugin' => plugin_basename( __DIR__ ),
+					'TB_iframe' => true,
+					'width' => 772,
+					'height' => 788
+				),
+				admin_url( 'plugin-install.php' )
+			),
+			__( 'View details' )
+		);
+	}
+	return $links_array;
+}, 25, 4 );
+
 /*	Registro foglio di stile dei box personalizzati
 	Credits: https://stackoverflow.com/questions/21759642/wordpress-load-a-stylesheet-through-plugin
 */
@@ -178,6 +198,7 @@ function htmlContent_Pillole() { ?>
 	<?php return;
 }
 
+add_filter ('the_content', 'TagPersonalizzati');
 function TagPersonalizzati($content) {
 	# A piccoli passi - Gli articoli per chi deve ancora imparare
 		$piccolipassi =  '<div class="gb-block-notice piccolipassi">';
@@ -316,4 +337,3 @@ function TagPersonalizzati($content) {
 
    return $content;
 }
-add_filter ('the_content', 'TagPersonalizzati');
