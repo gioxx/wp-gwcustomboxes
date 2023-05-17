@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.16
+	Version: 0.17
 	Author URI: https://gioxx.org
 	License: GPL3
 */
