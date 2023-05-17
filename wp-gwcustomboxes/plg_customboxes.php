@@ -5,14 +5,14 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.22
+	Version: 0.23
 	Author URI: https://gioxx.org
 	License: GPL3
 */
 
 defined( 'ABSPATH' ) || exit;
 
-/*	Registro sorgente aggiornamento plugin e pagina dettaglio in Plugin Install
+/*	Registro sorgente aggiornamento plugin e collegamento a pagina di dettaglio (nell'area installazione plugin di WordPress)
 	Credits: https://rudrastyh.com/wordpress/self-hosted-plugin-update.html
 */
 if ( !class_exists('gwplgUpdateChecker') ) {
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.22';
+			$this->version = '0.23';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -206,7 +206,7 @@ add_action('admin_head-update-core.php', 'custom_plugin_icon');
 
 /* Elenco dei box (switch $boxSelection)
 */
-function htmlContent($boxSelection) {
+function htmlContent($boxSelection, $statoProdotto) {
 	switch ($boxSelection):
 		# A Piccoli Passi - Gli articoli per chi deve ancora imparare
 		case "piccolipassi":
@@ -218,15 +218,13 @@ function htmlContent($boxSelection) {
 			$boxContent .= '		<p>';
 			$boxContent .= '			<em>A piccoli passi</em> &egrave; una serie di articoli dedicata a chi non &egrave; solito districarsi tra termini tecnici e procedure troppo complesse. Righe di testo di facile comprensione corredate di immagini, semplici procedure che tutti possono mettere in pratica.<br />
 			Eredit&agrave; di un vecchio esperimento nel frattempo abbandonato e chiuso ma con uno storico che non intendo perdere e che preferisco pubblicare (solitamente) nel corso del fine settimana.<br />
-			Se vuoi leggere gli altri "<em>Piccoli passi</em>" <a href="'.network_site_url('/').'tag/piccoli-passi">fai clic qui</a>.';
+			Se vuoi leggere gli altri "<em>Piccoli passi</em>" <a href="' . network_site_url('/') . 'tag/piccoli-passi">fai clic qui</a>.';
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
 			break;
 		# Banco Prova (Classico, Baby, Console)
 		case "bancoprova":
-			global $wp_query;
-			$statoprodotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 			$boxContent =  '<div class="gb-block-notice">';
 			$boxContent .= '	<div class="gb-notice-title bancoprova">';
 			$boxContent .= '		<p>Disclaimer (<em>per un mondo pi&ugrave; pulito</em>)</p>';
@@ -236,17 +234,14 @@ function htmlContent($boxSelection) {
 			$boxContent .= '			<i class="fab fa-grav fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.<br />
 			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova <a href="' . network_site_url('/') . 'tag/banco-prova">fai clic qui</a>.';
-			if ( !empty($statoprodotto) ) {
-				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoprodotto . '</em>';
+			if ( !empty($statoProdotto) ) {
+				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
 			}
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
-			wp_reset_query();
 			break;
 		case "bancoprovababy":
-			global $wp_query;
-			$statoprodotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 			$boxContent =  '<div class="gb-block-notice">';
 			$boxContent .= '	<div class="gb-notice-title bancoprova">';
 			$boxContent .= '		<p>Disclaimer (<em>per un mondo pi&ugrave; pulito</em>)</p>';
@@ -256,17 +251,14 @@ function htmlContent($boxSelection) {
 			$boxContent .= '			<i class="fa-solid fa-child fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Baby</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.<br />
 			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova <a href="' . network_site_url('/') . 'tag/banco-prova-baby">fai clic qui</a>.';
-			if ( !empty($statoprodotto) ) {
-				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoprodotto . '</em>';
+			if ( !empty($statoProdotto) ) {
+				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
 			}
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
-			wp_reset_query();
 			break;
 		case "bancoprovaconsole":
-			global $wp_query;
-			$statoprodotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 			$boxContent =  '<div class="gb-block-notice">';
 			$boxContent .= '	<div class="gb-notice-title bancoprova">';
 			$boxContent .= '		<p>Disclaimer (<em>per un mondo pi&ugrave; pulito</em>)</p>';
@@ -276,13 +268,12 @@ function htmlContent($boxSelection) {
 			$boxContent .= '			<i class="fa-solid fa-ghost fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Console</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.
 			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova Console <a href="' . network_site_url('/') . 'tag/banco-prova-console">fai clic qui</a>.';
-			if ( !empty($statoprodotto) ) {
-				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoprodotto . '</em>';
+			if ( !empty($statoProdotto) ) {
+				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
 			}
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
-			wp_reset_query();
 			break;
 		# Google Android's Corner
 		case "androidcorner":
@@ -293,7 +284,7 @@ function htmlContent($boxSelection) {
 			$boxContent .= '	<div class="gb-notice-text android">';
 			$boxContent .= '		<p>';
 			$boxContent .= '			<i class="fab fa-android fa-pull-right fa-7x" style="padding-right: 10px;"></i> <strong>Android</strong>&#39s Corner &egrave; il nome di una raccolta di articoli pubblicati <em>su questi lidi</em> che raccontano l&#39esperienza Android: consigli, applicazioni, novit&agrave; e qualsiasi altra cosa possa ruotare attorno al mondo del sistema operativo mobile di Google e sulla quale ho avuto possibilit&agrave; di mettere mano, di ritoccare, di far funzionare. Una scusa come un&#39altra per darti una mano e scambiare opinioni insieme :-)<br />
-			Se vuoi leggere gli altri articoli dedicati ad Android <a href="' . network_site_url('/') . 'tag/android-corner">fai clic qui</a>.'
+			Se vuoi leggere gli altri articoli dedicati ad Android <a href="' . network_site_url('/') . 'tag/android-corner">fai clic qui</a>.';
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
@@ -346,28 +337,6 @@ function htmlContent($boxSelection) {
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
 			break;
-		case "sponsoredprj":
-			global $wp_query;
-			$logosponsor = get_post_meta(get_the_ID(), 'logosponsor', true);
-			$nomesponsor = get_post_meta(get_the_ID(), 'nomesponsor', true);
-			$descsponsor = get_post_meta(get_the_ID(), 'descsponsor', true);
-			$hashsponsor = get_post_meta(get_the_ID(), 'hashsponsor', true);
-			$boxContent = '<div style="border: #000000 solid 1px; padding-top: 10px; padding-bottom: 7px; padding-left: 10px; padding-right: 10px; background-color: #FFFFFF; margin-bottom: 10px; min-height: 100px;">';
-			if ( !empty($logosponsor) ) {
-				$boxContent .= '<img class="alignright" style="border: 0px none; max-width: 250px;" title="Sponsor" alt="Sponsor" src="' . $logosponsor . '" />';
-			}
-			if ( !empty($nomesponsor) ) {
-				$boxContent .= 'Questo articolo nasce da un progetto in collaborazione con <strong>' . $nomesponsor . '</strong>.';
-			}
-			if ( !empty($hashsponsor) ) {
-				$boxContent .= 'Puoi seguire tutti gli sviluppi attraverso il tag &#35;<a href="' . network_site_url('/') . 'tag/' . $hashsponsor . '">' . $hashsponsor . '</a>.';
-			}
-			if ( !empty($descsponsor) ) {
-				$boxContent .= '<br /><br />Di cosa si parla, in breve: <br /><em>' . $descsponsor . '</em>';
-			}
-			$boxContent .= '</div>';
-			wp_reset_query();
-			break;
 		default:
 			$boxContent = '';
 	endswitch;
@@ -377,6 +346,17 @@ function htmlContent($boxSelection) {
 
 add_filter ('the_content', 'gwCustomBoxes');
 function gwCustomBoxes($content) {
+
+	/*	Se l'articolo appartiene al Banco Prova (qualsiasi), rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
+	$bancoprova_tags = array( 'banco-prova', 'banco-prova-baby', 'banco-prova-console' );
+	if ( has_tag( $bancoprova_tags ) ) {
+		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
+			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
+		} else {
+			$statoProdotto = '';
+		}
+	}
+
 	// Pagina singola
 	if ( is_single() ) {
 		
@@ -401,44 +381,41 @@ function gwCustomBoxes($content) {
 		/* 	Modifica del contenuto articolo in base al box da includere in pagina singola
 			Il comportamento viene poi replicato per Home Page e Archivi (qui di seguito)
 		*/	
-		if ( has_tag('piccoli-passi') ) { $content .= htmlContent('piccolipassi'); } // A Piccoli Passi
-		if ( has_tag('banco-prova') ) { $content .= htmlContent('bancoprova'); } // Banco Prova
-		if ( has_tag('banco-prova-baby') ) { $content .= $htmlContent('bancoprovababy'); } // Banco Prova Baby
-		if ( has_tag('banco-prova-console') ) { $content .= $htmlContent('bancoprovaconsole'); } // Banco Prova Console
-		if ( has_tag('android-corner') ) { $content .= htmlContent('androidcorner'); } // Google Android's Corner
-		if ( has_tag('mrl') ) { $content .= htmlContent('mrl'); } // MRL - Milano Real Life
-		if ( has_tag('pillole') ) { $content .= htmlContent('pillole'); } // Pillole
-		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano'); } // Press Start: Milano
-		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored'); } // Sponsorizzato: articolo
-		if ( has_tag('sponsored-project') ) { $content .= htmlContent('sponsoredprj'); } // Progetto sponsorizzato
+		if ( has_tag('piccoli-passi') ) { $content .= htmlContent('piccolipassi', ''); } // A Piccoli Passi
+		if ( has_tag('banco-prova') ) { $content .= htmlContent('bancoprova', $statoProdotto); } // Banco Prova
+		if ( has_tag('banco-prova-baby') ) { $content .= htmlContent('bancoprovababy', $statoProdotto);	} // Banco Prova Baby
+		if ( has_tag('banco-prova-console') ) { $content .= htmlContent('bancoprovaconsole', $statoProdotto); } // Banco Prova Console
+		if ( has_tag('android-corner') ) { $content .= htmlContent('androidcorner', ''); } // Google Android's Corner
+		if ( has_tag('mrl') ) { $content .= htmlContent('mrl', ''); } // MRL - Milano Real Life
+		if ( has_tag('pillole') ) { $content .= htmlContent('pillole', ''); } // Pillole
+		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano', ''); } // Press Start: Milano
+		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
 	// Home Page
 	if ( is_home() ) {
-		if ( has_tag('piccoli-passi') ) { $content .= htmlContent('piccolipassi'); } // A Piccoli Passi
-		if ( has_tag('banco-prova') ) { $content .= htmlContent('bancoprova'); } // Banco Prova
-		if ( has_tag('banco-prova-baby') ) { $content .= $htmlContent('bancoprovababy'); } // Banco Prova Baby
-		if ( has_tag('banco-prova-console') ) { $content .= $htmlContent('bancoprovaconsole'); } // Banco Prova Console
-		if ( has_tag('android-corner') ) { $content .= htmlContent('androidcorner'); } // Google Android's Corner
-		if ( has_tag('mrl') ) { $content .= htmlContent('mrl'); } // MRL - Milano Real Life
-		if ( has_tag('pillole') ) { $content .= htmlContent('pillole'); } // Pillole
-		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano'); } // Press Start: Milano
-		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored'); } // Sponsorizzato: articolo
-		if ( has_tag('sponsored-project') ) { $content .= htmlContent('sponsoredprj'); } // Progetto sponsorizzato
+		if ( has_tag('piccoli-passi') ) { $content .= htmlContent('piccolipassi', ''); } // A Piccoli Passi
+		if ( has_tag('banco-prova') ) { $content .= htmlContent('bancoprova', $statoProdotto); } // Banco Prova
+		if ( has_tag('banco-prova-baby') ) { $content .= htmlContent('bancoprovababy', $statoProdotto);	} // Banco Prova Baby
+		if ( has_tag('banco-prova-console') ) { $content .= htmlContent('bancoprovaconsole', $statoProdotto); } // Banco Prova Console
+		if ( has_tag('android-corner') ) { $content .= htmlContent('androidcorner', ''); } // Google Android's Corner
+		if ( has_tag('mrl') ) { $content .= htmlContent('mrl', ''); } // MRL - Milano Real Life
+		if ( has_tag('pillole') ) { $content .= htmlContent('pillole', ''); } // Pillole
+		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano', ''); } // Press Start: Milano
+		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
 	// Archivi
 	if ( is_archive() ) {
-		if (has_tag('piccoli-passi')) { $content.= htmlContent('piccolipassi'); } // A Piccoli Passi
-		if (has_tag('banco-prova')) { $content.= htmlContent('bancoprova'); } // Banco Prova
-		if (has_tag('banco-prova-baby')) { $content.= $htmlContent('bancoprovababy'); } // Banco Prova Baby
-		if (has_tag('banco-prova-console')) { $content.= $htmlContent('bancoprovaconsole'); } // Banco Prova Console
-		if (has_tag('android-corner')) { $content.= htmlContent('androidcorner'); } // Google Android's Corner
-		if (has_tag('mrl')) { $content.= htmlContent('mrl'); } // MRL - Milano Real Life
-		if (has_tag('pillole')) { $content.= htmlContent('pillole'); } // Pillole
-		if (has_tag('press-start-milano')) { $content.= htmlContent('pstartmilano'); } // Press Start: Milano
-		if (has_category('sponsored')) { $content.= htmlContent('sponsored'); } // Sponsorizzato: articolo
-		if (has_tag('sponsored-project')) { $content.= htmlContent('sponsoredprj'); } // Sponsorizzato: progetto
+		if (has_tag('piccoli-passi')) { $content.= htmlContent('piccolipassi', ''); } // A Piccoli Passi
+		if ( has_tag('banco-prova') ) { $content .= htmlContent('bancoprova', $statoProdotto); } // Banco Prova
+		if ( has_tag('banco-prova-baby') ) { $content .= htmlContent('bancoprovababy', $statoProdotto);	} // Banco Prova Baby
+		if ( has_tag('banco-prova-console') ) { $content .= htmlContent('bancoprovaconsole', $statoProdotto); } // Banco Prova Console
+		if (has_tag('android-corner')) { $content.= htmlContent('androidcorner', ''); } // Google Android's Corner
+		if (has_tag('mrl')) { $content.= htmlContent('mrl', ''); } // MRL - Milano Real Life
+		if (has_tag('pillole')) { $content.= htmlContent('pillole', ''); } // Pillole
+		if (has_tag('press-start-milano')) { $content.= htmlContent('pstartmilano', ''); } // Press Start: Milano
+		if (has_category('sponsored')) { $content.= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
    return $content;
