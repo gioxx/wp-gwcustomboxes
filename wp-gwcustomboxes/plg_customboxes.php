@@ -175,7 +175,8 @@ function htmlContent_Pillole() { ?>
 			</p>
 		</div>
 	</div>
-<?php }
+	<?php return;
+}
 
 function TagPersonalizzati($content) {
 	# A piccoli passi - Gli articoli per chi deve ancora imparare
@@ -272,8 +273,6 @@ function TagPersonalizzati($content) {
 		if ( strtotime(get_the_time('y-m-d')) <= mktime(0,0,0,date('m')-$oldpost) ) {
 			$content .= $alertpubblicazione;
 		}
-	
-		//----------------------------------------------------------------------------------------------------------------------
 	
 		if ( has_tag('mrl') ) { $content .= $mrl; } // MRL - Milano Real Life
 		if ( has_tag('press-start-milano') ) { $content .= $pstartmilano; } // Press Start: Milano

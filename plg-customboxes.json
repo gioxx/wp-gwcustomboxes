@@ -4,7 +4,7 @@
 	"author" : "<a href='https://gioxx.org'>Gioxx</a>",
 	"author_profile" : "https://profiles.wordpress.org/gioxx",
     	"donate_link" : "https://ko-fi.com/gioxx",
-	"version" : "0.16",
+	"version" : "0.17",
 	"download_url" : "https://github.com/gioxx/wp-gwcustomboxes/releases/latest/download/wp-gwcustomboxes.zip",
 	"requires" : "6.2",
 	"tested" : "6.2.1",
