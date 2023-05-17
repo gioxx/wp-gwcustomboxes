@@ -24,7 +24,7 @@ if ( !class_exists('plgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '1.0';
+			$this->version = '0.19';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = false;
 
