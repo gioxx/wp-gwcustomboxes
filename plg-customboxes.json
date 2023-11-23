@@ -5,7 +5,7 @@
 	"author_profile" : "https://profiles.wordpress.org/gioxx",
     	"donate_link" : "https://ko-fi.com/gioxx",
 	"version" : "0.24",
-	"download_url" : "https://github.com/gioxx/wp-gwcustomboxes/releases/download/0.23/wp-gwcustomboxes.zip",
+	"download_url" : "https://github.com/gioxx/wp-gwcustomboxes/releases/download/0.24/wp-gwcustomboxes.zip",
 	"requires" : "6.2",
 	"tested" : "6.4.1",
 	"requires_php" : "8.0",
