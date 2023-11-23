@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.23
+	Version: 0.24
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.23';
+			$this->version = '0.24';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -231,8 +231,8 @@ function htmlContent($boxSelection, $statoProdotto) {
 			$boxContent .= '	</div>';
 			$boxContent .= '	<div class="gb-notice-text">';
 			$boxContent .= '		<p>';
-			$boxContent .= '			<i class="fab fa-grav fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.<br />
-			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
+			$boxContent .= '			<i class="fab fa-grav fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito, in altri ancora sono io ad acquistarlo e decidere di pubblicare un articolo solo per il piacere di farlo e di condividere con te il mio parere.<br />
+			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna <em>marchetta</em></strong>, solo il mio punto di vista fatto di <em>pro</em> e di <em>contro</em>. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova <a href="' . network_site_url('/') . 'tag/banco-prova">fai clic qui</a>.';
 			if ( !empty($statoProdotto) ) {
 				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
@@ -248,8 +248,8 @@ function htmlContent($boxSelection, $statoProdotto) {
 			$boxContent .= '	</div>';
 			$boxContent .= '	<div class="gb-notice-text">';
 			$boxContent .= '		<p>';
-			$boxContent .= '			<i class="fa-solid fa-child fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Baby</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.<br />
-			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
+			$boxContent .= '			<i class="fa-solid fa-child fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Baby</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito, in altri  ancora sono io ad acquistarlo e decidere di pubblicare un articolo solo per il piacere di farlo e di condividere con te il mio parere.<br />
+			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio punto di vista fatto di <em>pro</em> e di <em>contro</em>. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova <a href="' . network_site_url('/') . 'tag/banco-prova-baby">fai clic qui</a>.';
 			if ( !empty($statoProdotto) ) {
 				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
@@ -265,8 +265,8 @@ function htmlContent($boxSelection, $statoProdotto) {
 			$boxContent .= '	</div>';
 			$boxContent .= '	<div class="gb-notice-text">';
 			$boxContent .= '		<p>';
-			$boxContent .= '			<i class="fa-solid fa-ghost fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Console</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.
-			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br />
+			$boxContent .= '			<i class="fa-solid fa-ghost fa-pull-right fa-7x" style="padding-right: 10px;"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Console</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito, in altri ancora sono io ad acquistarlo e decidere di pubblicare un articolo solo per il piacere di farlo e di condividere con te il mio parere.
+			<br />Ogni articolo rispetta - <strong><em>come sempre</em></strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio punto di vista fatto di <em>pro</em> e di <em>contro</em>. Riporto i fatti a prescindere dal giudizio finale.<br />
 			Se vuoi leggere le altre recensioni del Banco Prova Console <a href="' . network_site_url('/') . 'tag/banco-prova-console">fai clic qui</a>.';
 			if ( !empty($statoProdotto) ) {
 				$boxContent .= '<br /><br /><strong>Prodotto</strong>: <em>' . $statoProdotto . '</em>';
@@ -283,7 +283,7 @@ function htmlContent($boxSelection, $statoProdotto) {
 			$boxContent .= '	</div>';
 			$boxContent .= '	<div class="gb-notice-text android">';
 			$boxContent .= '		<p>';
-			$boxContent .= '			<i class="fab fa-android fa-pull-right fa-7x" style="padding-right: 10px;"></i> <strong>Android</strong>&#39s Corner &egrave; il nome di una raccolta di articoli pubblicati <em>su questi lidi</em> che raccontano l&#39esperienza Android: consigli, applicazioni, novit&agrave; e qualsiasi altra cosa possa ruotare attorno al mondo del sistema operativo mobile di Google e sulla quale ho avuto possibilit&agrave; di mettere mano, di ritoccare, di far funzionare. Una scusa come un&#39altra per darti una mano e scambiare opinioni insieme :-)<br />
+			$boxContent .= '			<i class="fab fa-android fa-pull-right fa-7x" style="padding-right: 10px;"></i> <strong>Android</strong>&#39s Corner &egrave; il nome di una raccolta di articoli pubblicati <em>su questi lidi</em> che raccontano l&#39esperienza Android: consigli, applicazioni, novit&agrave; e qualsiasi altra cosa possa ruotare attorno al mondo del sistema operativo mobile di Google e sulla quale ho avuto possibilit&agrave; di mettere mano, di ritoccare, di far funzionare. Una scusa come un&#39altra per darti una mano e scambiare opinioni :-)<br />
 			Se vuoi leggere gli altri articoli dedicati ad Android <a href="' . network_site_url('/') . 'tag/android-corner">fai clic qui</a>.';
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
