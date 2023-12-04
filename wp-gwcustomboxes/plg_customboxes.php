@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.24
+	Version: 0.25
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.24';
+			$this->version = '0.25';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -333,6 +333,9 @@ function htmlContent($boxSelection, $statoProdotto) {
 			$boxContent .= '		<p>';
 			$boxContent .= '			<i class="fas fa-file-invoice-dollar fa-pull-right fa-7x" style="padding-right: 10px;"></i> La regia si prende una piccola pausa e ti lascia ai consigli per gli acquisti, articoli scritti sempre e comunque dal proprietario della baracca (o da ospiti di vecchia data) ma - <em>contrariamente al solito</em> - <strong>sponsorizzati</strong>.<br />
 			Il giudizio &egrave; e sar&agrave; sempre imparziale come il resto delle pubblicazioni. D\'accordo pagare le spese di questo blog ma mai vendere giudizi positivi se non meritati. Nel caso in cui venga richiesta esplicita modifica dell\'articolo e/o del giudizio sar&agrave; mia cura rimanere quanto pi&ugrave; neutrale possibile.';
+			if ( !empty($statoProdotto) ) {
+				$boxContent .= '<br /><br /><strong>Tipo di sponsorizzazione</strong>: <em>' . $statoProdotto . '</em>';
+			}
 			$boxContent .= '		</p>';
 			$boxContent .= '	</div>';
 			$boxContent .= '</div>';
@@ -350,6 +353,15 @@ function gwCustomBoxes($content) {
 	/*	Se l'articolo appartiene al Banco Prova (qualsiasi), rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
 	$bancoprova_tags = array( 'banco-prova', 'banco-prova-baby', 'banco-prova-console' );
 	if ( has_tag( $bancoprova_tags ) ) {
+		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
+			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
+		} else {
+			$statoProdotto = '';
+		}
+	}
+
+	/*	Se l'articolo appartiene alla categoria Sponsored, rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
+	if ( in_category('sponsored') ) {
 		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
 			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 		} else {
