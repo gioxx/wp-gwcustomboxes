@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.25
+	Version: 0.26
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.25';
+			$this->version = '0.26';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -188,7 +188,7 @@ function custom_plugin_icon() {
 
     ?>
     <style>
-        #<?php echo $plugin_slug; ?> .dashicons-admin-generic:before {
+        <?php echo $plugin_slug; ?> .dashicons-admin-generic:before {
             content: "\f108";
             background-image: url(<?php echo $icon_url; ?>);
             background-repeat: no-repeat;
@@ -361,7 +361,7 @@ function gwCustomBoxes($content) {
 	}
 
 	/*	Se l'articolo appartiene alla categoria Sponsored, rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
-	if ( in_category('sponsored') ) {
+	if ( has_category('sponsored') ) {
 		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
 			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 		} else {
