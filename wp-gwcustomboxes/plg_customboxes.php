@@ -5,7 +5,7 @@
 	Plugin URI: https://github.com/gioxx/wp-gwcustomboxes
 	Description: Box personalizzati per gli articoli di Gioxx's Wall.
 	Author: Gioxx
-	Version: 0.26
+	Version: 0.27
 	Author URI: https://gioxx.org
 	License: GPL3
 */
@@ -24,7 +24,7 @@ if ( !class_exists('gwplgUpdateChecker') ) {
 
 		public function __construct() {
 			$this->plugin_slug = plugin_basename( __DIR__ );
-			$this->version = '0.26';
+			$this->version = '0.27';
 			$this->cache_key = 'customboxes_updater';
 			$this->cache_allowed = true;
 
@@ -350,18 +350,9 @@ function htmlContent($boxSelection, $statoProdotto) {
 add_filter ('the_content', 'gwCustomBoxes');
 function gwCustomBoxes($content) {
 
-	/*	Se l'articolo appartiene al Banco Prova (qualsiasi), rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
-	$bancoprova_tags = array( 'banco-prova', 'banco-prova-baby', 'banco-prova-console' );
-	if ( has_tag( $bancoprova_tags ) ) {
-		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
-			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
-		} else {
-			$statoProdotto = '';
-		}
-	}
-
-	/*	Se l'articolo appartiene alla categoria Sponsored, rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
-	if ( has_category('sponsored') ) {
+	/*	Se l'articolo appartiene al Banco Prova (qualsiasi) o è sponsorizzato, rilevo esistenza del campo personalizzato "statoprodotto" e lo popolo di conseguenza */
+	$statoprodotto_tags = array( 'banco-prova', 'banco-prova-baby', 'banco-prova-console', 'sponsored' );
+	if ( has_tag( $statoprodotto_tags ) ) {
 		if ( !empty(get_post_meta(get_the_ID(), 'statoprodotto', true)) ) {
 			$statoProdotto = get_post_meta(get_the_ID(), 'statoprodotto', true);
 		} else {
@@ -401,7 +392,7 @@ function gwCustomBoxes($content) {
 		if ( has_tag('mrl') ) { $content .= htmlContent('mrl', ''); } // MRL - Milano Real Life
 		if ( has_tag('pillole') ) { $content .= htmlContent('pillole', ''); } // Pillole
 		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano', ''); } // Press Start: Milano
-		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
+		if ( has_tag('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
 	// Home Page
@@ -414,7 +405,7 @@ function gwCustomBoxes($content) {
 		if ( has_tag('mrl') ) { $content .= htmlContent('mrl', ''); } // MRL - Milano Real Life
 		if ( has_tag('pillole') ) { $content .= htmlContent('pillole', ''); } // Pillole
 		if ( has_tag('press-start-milano') ) { $content .= htmlContent('pstartmilano', ''); } // Press Start: Milano
-		if ( has_category('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
+		if ( has_tag('sponsored') ) { $content .= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
 	// Archivi
@@ -427,7 +418,7 @@ function gwCustomBoxes($content) {
 		if (has_tag('mrl')) { $content.= htmlContent('mrl', ''); } // MRL - Milano Real Life
 		if (has_tag('pillole')) { $content.= htmlContent('pillole', ''); } // Pillole
 		if (has_tag('press-start-milano')) { $content.= htmlContent('pstartmilano', ''); } // Press Start: Milano
-		if (has_category('sponsored')) { $content.= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
+		if (has_tag('sponsored')) { $content.= htmlContent('sponsored', ''); } // Sponsorizzato: articolo
 	}
 
    return $content;
