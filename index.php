@@ -3,7 +3,7 @@
  * Plugin Name:         Custom Boxes per Gioxx's Wall
  * Plugin URI:          https://github.com/gioxx/wp-gwcustomboxes
  * Description:         Box personalizzati per gli articoli di Gioxx's Wall, ora aggiornabili tramite Git Updater.
- * Version:             0.27
+ * Version:             0.28
  * Author:              Gioxx
  * Author URI:          https://gioxx.org
  * License:             GPL3
@@ -45,7 +45,7 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 'gwcustomboxes-styles',
                 plugin_dir_url( __FILE__ ) . 'css/plg_customboxes.css',
                 array(),
-                '0.27'
+                '0.28'
             );
         }
 
@@ -73,7 +73,7 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
             }
 
             // Old post alert (posts older than 5 months)
-            if ( is_singular() ) {
+            if ( is_singular() && !is_page(1282) ) {
                 $published = strtotime( $post->post_date_gmt );
                 if ( $published && ( time() - $published ) > ( 5 * MONTH_IN_SECONDS ) ) {
                     $content .= $this->get_alert_box();
