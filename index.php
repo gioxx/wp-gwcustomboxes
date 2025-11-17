@@ -3,11 +3,10 @@
  * Plugin Name:         Custom Boxes per Gioxx's Wall
  * Plugin URI:          https://github.com/gioxx/wp-gwcustomboxes
  * Description:         Box personalizzati per gli articoli di Gioxx's Wall, ora aggiornabili tramite Git Updater.
- * Version:             0.30
+ * Version:             0.31
  * Author:              Gioxx
  * Author URI:          https://gioxx.org
  * License:             GPL3
- * Text Domain:         wp-gwcustomboxes
  *
  * GitHub Plugin URI:   gioxx/wp-gwcustomboxes
  * Primary Branch:      main
@@ -21,20 +20,8 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
          * Initialization
          */
         public function __construct() {
-            add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
             add_filter( 'the_content', array( $this, 'filter_content' ) );
-        }
-
-        /**
-         * Load plugin textdomain for translations
-         */
-        public function load_textdomain() {
-            load_plugin_textdomain(
-                'wp-gwcustomboxes',
-                false,
-                dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-            );
         }
 
         /**
@@ -45,7 +32,7 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 'gwcustomboxes-styles',
                 plugin_dir_url( __FILE__ ) . 'css/plg_customboxes.css',
                 array(),
-                '0.30'
+                '0.31'
             );
         }
 
@@ -82,14 +69,13 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
 
             // Possible box tags
             $boxes = array(
-                'piccoli-passi'         => 'piccolipassi',
-                'banco-prova'           => 'bancoprova',
+                'android-corner'        => 'androidcorner',
                 'banco-prova-baby'      => 'bancoprovababy',
                 'banco-prova-console'   => 'bancoprovaconsole',
-                'android-corner'        => 'androidcorner',
+                'banco-prova'           => 'bancoprova',
                 'mrl'                   => 'mrl',
+                'piccoli-passi'         => 'piccolipassi',
                 'pillole'               => 'pillole',
-                'press-start-milano'    => 'pstartmilano',
                 'sponsored'             => 'sponsored',
             );
 
@@ -111,12 +97,12 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
             ob_start(); ?>
             <div class="gb-block-notice timealert">
                 <div class="gb-notice-title">
-                    <p class="timealert"><?php esc_html_e( "L'articolo potrebbe non essere aggiornato", 'wp-gwcustomboxes' ); ?></p>
+                    <p class="timealert">L'articolo potrebbe non essere aggiornato</p>
                 </div>
                 <div class="gb-notice-text timealert">
                     <p class="timealert">
                         <?php printf(
-                            esc_html__( 'Questo post è stato scritto più di %d mesi fa, potrebbe non essere aggiornato. Per qualsiasi dubbio lascia un commento!', 'wp-gwcustomboxes' ),
+                            esc_html( 'Questo post è stato scritto più di %d mesi fa, potrebbe non essere aggiornato. Per qualsiasi dubbio lascia un commento!' ),
                             5
                         ); ?>
                     </p>
@@ -136,28 +122,15 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
         private function get_box_html( $type, $state ) {
             ob_start();
             switch ( $type ) :
-                case 'piccolipassi': ?>
-                    <div class="gb-block-notice piccolipassi">
-                        <div class="gb-notice-title piccolipassi">
-                            <p><?php esc_html_e( 'A piccoli passi', 'wp-gwcustomboxes' ); ?></p>
+                case 'androidcorner': ?>
+                    <div class="gb-block-notice android">
+                        <div class="gb-notice-title android">
+                            <p>Android's Corner</p>
                         </div>
-                        <div class="gb-notice-text piccolipassi">
-                            <img class="alignright" style="max-height:120px;" title="<?php esc_attr_e( 'A piccoli passi...', 'wp-gwcustomboxes' ); ?>" alt="<?php esc_attr_e( 'A piccoli passi...', 'wp-gwcustomboxes' ); ?>" src="<?php echo esc_url( network_site_url( '/wp-content/uploads/2019/03/logo.png' ) ); ?>" />
-                            <p><?php esc_html_e( "Serie di articoli per chi muove i primi passi nel mondo tech.", 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/piccoli-passi' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.</p>
-                        </div>
-                    </div>
-                <?php break;
-
-                case 'bancoprova': ?>
-                    <div class="gb-block-notice bancoprova">
-                        <div class="gb-notice-title bancoprova">
-                            <p><?php esc_html_e( 'Disclaimer (per un mondo più pulito)', 'wp-gwcustomboxes' ); ?></p>
-                        </div>
-                        <div class="gb-notice-text">
-                            <p><i class="fab fa-grav fa-pull-right fa-7x"></i> <?php esc_html_e( 'Articoli con esperienza prodotto, pro e contro.', 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.
-                                <?php if ( $state ) : ?>
-                                    <br><strong><?php esc_html_e( 'Prodotto:', 'wp-gwcustomboxes' ); ?></strong> <em><?php echo esc_html( $state ); ?></em>
-                                <?php endif; ?>
+                        <div class="gb-notice-text android">
+                            <p>
+                                <i class="fab fa-android fa-pull-right fa-7x"></i> Android's Corner &egrave; il nome di una raccolta di articoli pubblicati su questi lidi che raccontano l'esperienza Android, consigli, applicazioni, novit&agrave; e qualsiasi altra cosa possa ruotare intorno al mondo del sistema operativo mobile di Google e sulla quale ho avuto possibilit&agrave; di mettere mano, di ritoccare, di far funzionare, una scusa come un'altra per darti una mano e scambiare opinioni insieme :-)<br/>
+                                Se vuoi leggere gli altri articoli dedicati ad Android <a href="<?php echo esc_url( network_site_url( '/tag/android-corner' ) ); ?>">fai clic qui</a>.
                             </p>
                         </div>
                     </div>
@@ -166,14 +139,21 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 case 'bancoprovababy': ?>
                     <div class="gb-block-notice bancoprova">
                         <div class="gb-notice-title bancoprova">
-                            <p><?php esc_html_e( 'Disclaimer (per un mondo più pulito)', 'wp-gwcustomboxes' ); ?></p>
+                            <p>Disclaimer (per un mondo pi&ugrave; pulito)</p>
                         </div>
                         <div class="gb-notice-text">
-                            <p><i class="fa-solid fa-child fa-pull-right fa-7x"></i> <?php esc_html_e( 'Articoli "Banco Prova Baby" con pro e contro.', 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova-baby' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.
-                                <?php if ( $state ) : ?>
-                                    <br><strong><?php esc_html_e( 'Prodotto:', 'wp-gwcustomboxes' ); ?></strong> <em><?php echo esc_html( $state ); ?></em>
-                                <?php endif; ?>
+                            <p>
+                                <i class="fa-solid fa-child fa-pull-right fa-7x"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Baby</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito, solo per il piacere di farlo e di condividere con te le mie opinioni.
                             </p>
+                            <p>
+                                Ogni articolo rispetta - <strong>come sempre</strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere, riporto i fatti, a prescindere dal giudizio finale.<br/>
+                                Se vuoi leggere le altre recensioni del Banco Prova Baby <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova-baby' ) ); ?>">fai clic qui</a>.
+                            </p>
+                            <?php if ( $state ) : ?>
+                                <p>
+                                    <strong>Prodotto</strong>: <em><?php echo esc_html( $state ); ?></em>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php break;
@@ -181,25 +161,43 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 case 'bancoprovaconsole': ?>
                     <div class="gb-block-notice bancoprova">
                         <div class="gb-notice-title bancoprova">
-                            <p><?php esc_html_e( 'Disclaimer (per un mondo più pulito)', 'wp-gwcustomboxes' ); ?></p>
+                            <p>Disclaimer (per un mondo pi&ugrave; pulito)</p>
                         </div>
                         <div class="gb-notice-text">
-                            <p><i class="fab fa-xbox fa-pull-right fa-7x"></i> <?php esc_html_e( 'Articoli "Banco Prova Console" con pro e contro.', 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova-console' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.
-                                <?php if ( $state ) : ?>
-                                    <br><strong><?php esc_html_e( 'Prodotto:', 'wp-gwcustomboxes' ); ?></strong> <em><?php echo esc_html( $state ); ?></em>
-                                <?php endif; ?>
+                            <p>
+                                <i class="fab fa-xbox fa-pull-right fa-7x"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova Console</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito, solo per il piacere di farlo e di condividere con te le mie opinioni.
                             </p>
+                            <p>
+                                Ogni articolo rispetta - <strong>come sempre</strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere, riporto i fatti, a prescindere dal giudizio finale.<br />
+                                Se vuoi leggere le altre recensioni del Banco Prova Console <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova-console' ) ); ?>">fai clic qui</a>.
+                            </p>
+                            <?php if ( $state ) : ?>
+                                <p>
+                                    <strong>Prodotto</strong>: <em><?php echo esc_html( $state ); ?></em>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php break;
 
-                case 'androidcorner': ?>
-                    <div class="gb-block-notice android">
-                        <div class="gb-notice-title android">
-                            <p><?php esc_html_e( "Android's Corner", 'wp-gwcustomboxes' ); ?></p>
+                case 'bancoprova': ?>
+                    <div class="gb-block-notice bancoprova">
+                        <div class="gb-notice-title bancoprova">
+                            <p>Disclaimer (per un mondo pi&ugrave; pulito)</p>
                         </div>
-                        <div class="gb-notice-text android">
-                            <p><i class="fab fa-android fa-pull-right fa-7x"></i> <?php esc_html_e( "Articoli sull'esperienza Android.", 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/android-corner' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.</p>
+                        <div class="gb-notice-text">
+                            <p>
+                                <i class="fab fa-grav fa-pull-right fa-7x"></i> Gli articoli che appartengono al tag &quot;<strong>Banco Prova</strong>&quot; raccontano la mia personale esperienza con prodotti generalmente forniti da chi li realizza. In alcuni casi il prodotto descritto rimane a me, in altri viene restituito. In altri casi ancora sono io ad acquistarlo e decidere di pubblicare un articolo in seguito solo per il piacere di farlo e di condividere con te le mie opinioni.
+                            </p>
+                            <p>
+                                Ogni articolo rispetta - <strong>come sempre</strong> - i miei standard: <strong>nessuna marchetta</strong>, solo il mio parere. Riporto i fatti a prescindere dal giudizio finale.<br/>
+                                Se vuoi leggere le altre recensioni del Banco Prova <a href="<?php echo esc_url( network_site_url( '/tag/banco-prova' ) ); ?>">fai clic qui</a>.
+                            </p>
+                            <?php if ( $state ) : ?>
+                                <p>
+                                    <strong>Prodotto</strong>: <em><?php echo esc_html( $state ); ?></em>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php break;
@@ -207,11 +205,34 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 case 'mrl': ?>
                     <div class="gb-block-notice mrl">
                         <div class="gb-notice-title mrl">
-                            <p><?php esc_html_e( 'Milano Real Life (MRL)', 'wp-gwcustomboxes' ); ?></p>
+                            <p>Milano Real Life (MRL)</p>
                         </div>
                         <div class="gb-notice-text mrl">
                             <img class="alignright" style="max-width:100px;" src="<?php echo esc_url( network_site_url( '/wp-content/uploads/MilanoRealLife.png' ) ); ?>" alt="MRL" title="MRL" />
-                            <p><?php esc_html_e( 'Articoli sulla vita a Milano.', 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/mrl' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.</p>
+                            <p>
+                                &Egrave; il nome di una raccolta di articoli pubblicati sul mio blog, raccontano la vita di un &quot;perfetto nessuno&quot; che ha deciso di spostare abitudini e quotidianit&agrave; in una differente città rispetto a quella di origine.<br/>
+                                Alla scoperta della caotica capitale lombarda mai tanto amata e odiata allo stesso tempo, per chi &egrave; nato qui e ancora oggi continua a viverci per volere o necessit&agrave;, per le centinaia di persone che invece vengono da fuori e vedono Milano come una piacevole alternativa o una costrizione imposta dalla propria vita lavorativa.<br />
+                                La rubrica &quot;leggera&quot; di approfondimento alla quale però non fare l'abitudine, non siamo mica così affidabili da queste parti!
+                            </p>
+                            <p>
+                                Se vuoi leggere gli altri articoli dedicati alla &quot;vita milanese&quot; <a href="<?php echo esc_url( network_site_url( '/tag/mrl' ) ); ?>">fai clic qui</a>.
+                            </p>
+                        </div>
+                    </div>
+                <?php break;
+
+                case 'piccolipassi': ?>
+                    <div class="gb-block-notice piccolipassi">
+                        <div class="gb-notice-title piccolipassi">
+                            <p>A piccoli passi</p>
+                        </div>
+                        <div class="gb-notice-text piccolipassi">
+                            <img class="alignright" style="max-height: 120px;" title="A piccoli passi" alt="A piccoli passi" src="<?php echo esc_url( network_site_url( '/wp-content/uploads/2019/03/logo.png' ) ); ?>" />
+                            <p>
+                                A <em>piccoli passi</em> &egrave; una serie di articoli dedicata a chi non &egrave; solito districarsi tra termini tecnici e procedure troppo complesse. Righe di testo di facile comprensione corredate di immagini, semplici procedure che tutti possono imparare e mettere subito in pratica.<br />
+                                Eredit&agrave; di un vecchio esperimento nel frattempo abbandonato e chiuso, ma con uno storico che non intendo perdere e che preferisco pubblicare nel corso del fine settimana.<br />
+                                Se vuoi leggere gli altri &quot;<em>Piccoli passi</em>&quot; <a href="<?php echo esc_url( network_site_url( '/tag/piccoli-passi' ) ); ?>">fai clic qui</a>.
+                            </p>
                         </div>
                     </div>
                 <?php break;
@@ -219,29 +240,33 @@ if ( ! class_exists( 'GWCustomBoxes' ) ) {
                 case 'pillole': ?>
                     <div class="gb-block-notice pillole">
                         <div class="gb-notice-title pillole">
-                            <p><?php esc_html_e( 'Pillole', 'wp-gwcustomboxes' ); ?></p>
+                            <p>Pillole</p>
                         </div>
                         <div class="gb-notice-text pillole">
-                            <p><i class="fas fa-bolt fa-pull-right fa-5x"></i> <?php esc_html_e( 'Articoli rapidi e pratici.', 'wp-gwcustomboxes' ); ?> <a href="<?php echo esc_url( network_site_url( '/tag/pillole' ) ); ?>"><?php esc_html_e( 'fai clic qui', 'wp-gwcustomboxes' ); ?></a>.</p>
+                            <p>
+                                <i class="fas fa-bolt fa-pull-right fa-5x"></i> Le pillole sono articoli di veloce lettura dedicati a notizie, script o qualsiasi altra cosa possa essere &quot;divorata e messa in pratica&quot; con poco. Uno spazio del blog riservato agli articoli &quot;a bruciapelo&quot;!<br />
+                                Se vuoi leggere le altre pillole <a href="<?php echo esc_url( network_site_url( '/tag/pillole' ) ); ?>">fai clic qui</a>.
+                            </p>
                         </div>
                     </div>
-                <?php break;
-
-                case 'pstartmilano': ?>
-                    <img src="<?php echo esc_url( network_site_url( '/wp-content/uploads/PressStart-GioxxsWall.png' ) ); ?>" alt="Press Start Milano" style="padding-bottom:15px;" />
                 <?php break;
 
                 case 'sponsored': ?>
                     <div class="gb-block-notice sponsored">
                         <div class="gb-notice-title sponsored">
-                            <p><?php esc_html_e( 'Sponsored', 'wp-gwcustomboxes' ); ?></p>
+                            <p><?php echo esc_html( 'Sponsored' ); ?></p>
                         </div>
                         <div class="gb-notice-text sponsored">
-                            <p><i class="fas fa-file-invoice-dollar fa-pull-right fa-7x"></i> <?php esc_html_e( 'Articolo sponsorizzato, giudizio imparziale.', 'wp-gwcustomboxes' ); ?>
-                                <?php if ( $state ) : ?>
-                                    <br><strong><?php esc_html_e( 'Tipo di sponsorizzazione:', 'wp-gwcustomboxes' ); ?></strong> <em><?php echo esc_html( $state ); ?></em>
-                                <?php endif; ?>
+                            <p>
+                                <i class="fas fa-file-invoice-dollar fa-pull-right fa-7x"></i> La regia si prende una piccola pausa e ti lascia ai consigli per gli acquisti, articoli scritti sempre e comunque dal proprietario della baracca (o da ospiti di vecchia data) ma - contrariamente al solito - sponsorizzati.<br />
+                                Il giudizio &egrave; e sar&agrave; sempre imparziale come il resto delle pubblicazioni.<br />
+                                D'accordo pagare le spese di questo blog ma mai vendere giudizi positivi se non meritati. Nel caso in cui venga richiesta esplicita modifica dell'articolo e/o del giudizio sarà mia cura rimanere quanto più neutrale possibile.
                             </p>
+                            <?php if ( $state ) : ?>
+                                <p>
+                                    <strong>Tipo di sponsorizzazione</strong>: <em><?php echo esc_html( $state ); ?></em>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php break;
